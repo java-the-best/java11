@@ -5,15 +5,21 @@ import java.util.function.Consumer;
 import java.util.function.DoubleConsumer;
 import java.util.function.IntConsumer;
 import java.util.function.LongConsumer;
+import java.util.function.ObjDoubleConsumer;
+import java.util.function.ObjIntConsumer;
+import java.util.function.ObjLongConsumer;
 
 public class Consumers {
 
   public static void start() {
 //    consumer();
 //    intConsumer();
-    longConsumer();
+//    longConsumer();
 //    doubleConsumer();
 //    biConsumer();
+//    objIntConsumer();
+    objLongConsumer();
+//    objDoubleConsumer();
   }
 
   public static void consumer() {
@@ -51,5 +57,20 @@ public class Consumers {
     BiConsumer<String, Integer> biConsumer2 = (name, age) -> System.out.println(
         String.format("Добро пожаловать, %s, во второй зал. Вам %s лет.", name, age));
     biConsumer.andThen(biConsumer2).accept("Василий", 16);
+  }
+
+  public static void objIntConsumer() {
+    ObjIntConsumer<String> objIntConsumer = (str, d) -> System.out.println(str + (d + 5.63));
+    objIntConsumer.accept("В сумме ", 4);
+  }
+
+  public static void objLongConsumer() {
+    ObjLongConsumer<String> objLongConsumer = (str, d) -> System.out.println(str + (d + 5.63));
+    objLongConsumer.accept("В сумме ", 900L);
+  }
+
+  public static void objDoubleConsumer() {
+    ObjDoubleConsumer<String> objDoubleConsumer = (str, d) -> System.out.println(str + (d + 5.2));
+    objDoubleConsumer.accept("В сумме ", 4.5);
   }
 }

@@ -4,14 +4,34 @@ import java.util.function.BiPredicate;
 import java.util.function.DoublePredicate;
 import java.util.function.IntPredicate;
 import java.util.function.LongPredicate;
+import java.util.function.Predicate;
 
 public class Predicates {
 
   public static void start() {
+    predicate();
 //    intPredicate();
-    longPredicate();
+//    longPredicate();
 //    doublePredicate();
 //    biPredicate();
+  }
+
+  public static void predicate() {
+    Predicate<String> predicate = (str) -> str.length() > 3;
+    boolean b = predicate.test("привет");
+    System.out.println(b);
+    Predicate<String> predicate2 = (str) -> str.length() < 7;
+    boolean b2 = predicate.and(predicate2) .test("привет мир");
+    System.out.println(b2);
+    boolean b3 = predicate.negate().test("привет мир");
+    System.out.println(b3);
+    boolean b4 = predicate.or(predicate2) .test("привет мир");
+    System.out.println(b4);
+    Object object = "привет мир";
+    boolean b5 = Predicate.isEqual(object).test("привет мир");
+    System.out.println(b5);
+    boolean b6 = Predicate.not(predicate).test("hi");
+    System.out.println(b6);
   }
 
   public static void intPredicate() {

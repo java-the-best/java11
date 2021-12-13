@@ -1,19 +1,28 @@
 package java11.javaUtilFunction;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.function.BooleanSupplier;
 import java.util.function.DoubleSupplier;
 import java.util.function.IntSupplier;
 import java.util.function.LongSupplier;
+import java.util.function.Supplier;
 
 public class Suppliers {
 
   public static void start() {
+    supplier();
 //    booleanSupplier();
 //    intSupplier();
-    longSupplier();
+//    longSupplier();
 //    doubleSupplier();
+  }
+
+  public static void supplier() {
+    Supplier<String> supplier = () -> new SimpleDateFormat("dd.MM.yyyy").format(new Date());
+    String date = supplier.get();
+    System.out.println(date);
   }
 
   public static void booleanSupplier() {
