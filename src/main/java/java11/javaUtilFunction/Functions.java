@@ -19,25 +19,39 @@ import java.util.function.LongFunction;
 import java.util.function.LongToDoubleFunction;
 import java.util.function.LongToIntFunction;
 import java.util.function.LongUnaryOperator;
+import java.util.function.ToDoubleBiFunction;
+import java.util.function.ToDoubleFunction;
+import java.util.function.ToIntBiFunction;
+import java.util.function.ToIntFunction;
+import java.util.function.ToLongBiFunction;
+import java.util.function.ToLongFunction;
+import java.util.function.UnaryOperator;
 
 public class Functions {
 
   public static void start() {
 //    function();
+    unaryOperator();
 //    intFunction();
 //    longFunction();
 //    doubleFunction();
 //    intToLongFunction();
+//    toIntFunction();
+//    toLongFunction();
+//    toDoubleFunction();
 //    intToDoubleFunction();
 //    longToIntFunction();
 //    longToDoubleFunction();
 //    doubleToIntFunction();
 //    doubleToLongFunction();
 //    intUnaryOperator();
-    longUnaryOperator();
+//    longUnaryOperator();
 //    doubleUnaryOperator();
 //    biFunction();
 //    binaryOperator();
+//    toIntBiFunction();
+//    toLongBiFunction();
+//    toDoubleBiFunction();
 //    intBinaryOperator();
 //    longBinaryOperator();
 //    doubleBinaryOperator();
@@ -58,6 +72,15 @@ public class Functions {
     System.out.println(str3);
   }
 
+  private static void unaryOperator() {
+    UnaryOperator<Integer> unaryOperator = (i) -> i * i;
+    int i = unaryOperator.apply(9);
+    System.out.println(i);
+    UnaryOperator<Integer> unaryOperator2 = UnaryOperator.identity();
+    int i2 = unaryOperator2.apply(45);
+    System.out.println(i2);
+  }
+
   private static void intFunction() {
     IntFunction<String> intFunction = (i) -> String.valueOf(i + 13);
     String str = intFunction.apply(5);
@@ -74,6 +97,24 @@ public class Functions {
     DoubleFunction<String> doubleFunction = (d) -> String.valueOf(d / 2);
     String str = doubleFunction.apply(5.4);
     System.out.println(str);
+  }
+
+  private static void toIntFunction() {
+    ToIntFunction<String> toIntFunction = (str) -> Integer.parseInt(str) + 44;
+    int i = toIntFunction.applyAsInt("53");
+    System.out.println(i);
+  }
+
+  private static void toLongFunction() {
+    ToLongFunction<String> toLongFunction = (str) -> Long.parseLong(str) + 44;
+    long l = toLongFunction.applyAsLong("53");
+    System.out.println(l);
+  }
+
+  private static void toDoubleFunction() {
+    ToDoubleFunction<String> toDoubleFunction = (str) -> Double.parseDouble(str) + 44.22;
+    double d = toDoubleFunction.applyAsDouble("53.66");
+    System.out.println(d);
   }
 
   private static void intToLongFunction() {
@@ -176,6 +217,27 @@ public class Functions {
     BinaryOperator<Integer> bi3 = BinaryOperator.maxBy(Comparator.reverseOrder());
     Integer d3 = bi3.apply(5, 9);
     System.out.println(d3);
+  }
+
+  private static void toIntBiFunction() {
+    ToIntBiFunction<String, String> toIntBiFunction = (i1, i2) ->
+        Integer.parseInt(i1) + Integer.parseInt(i2);
+    int i = toIntBiFunction.applyAsInt("44", "36");
+    System.out.println(i);
+  }
+
+  private static void toLongBiFunction() {
+    ToLongBiFunction<String, String> toLongBiFunction = (l1, l2) ->
+        Long.parseLong(l1) + Long.parseLong(l2);
+    long l = toLongBiFunction.applyAsLong("44", "36");
+    System.out.println(l);
+  }
+
+  private static void toDoubleBiFunction() {
+    ToDoubleBiFunction<String, String> toDoubleBiFunction = (d1, d2) ->
+        Double.parseDouble(d1) - Double.parseDouble(d2);
+    double d = toDoubleBiFunction.applyAsDouble("44.63", "36.31");
+    System.out.println(d);
   }
 
   private static void intBinaryOperator() {
